@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export default function InnoVerseBanner() {
+export default function AxionBanner() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
@@ -24,10 +24,10 @@ export default function InnoVerseBanner() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 border border-amber-500/30 bg-amber-500/10 text-amber-400 text-xs font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full mb-8 shadow-[0_0_20px_rgba(245,158,11,0.2)]"
+          className="inline-flex items-center gap-2 border border-amber-500/30 bg-amber-500/10 text-amber-400 text-xs font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full mb-6 shadow-[0_0_20px_rgba(245,158,11,0.2)]"
         >
           <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-          Registrations Open
+          Registrations Open · DSCE Dept. of ETE
         </motion.div>
 
         {/* Title */}
@@ -35,11 +35,25 @@ export default function InnoVerseBanner() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-6xl sm:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-500 tracking-tight mb-6"
+          className="text-6xl sm:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-500 tracking-tight mb-4"
           style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: "0.05em" }}
         >
-          INNOVERSE <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600 drop-shadow-[0_0_15px_rgba(245,158,11,0.5)]">2026</span>
+          AXION <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600 drop-shadow-[0_0_15px_rgba(245,158,11,0.5)]">2026</span>
         </motion.h1>
+
+        {/* Tagline */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="inline-flex items-center gap-3 text-amber-400 text-sm sm:text-base font-extrabold tracking-[0.25em] uppercase mb-4"
+        >
+          <span>INNOVATE</span>
+          <span className="text-zinc-600">•</span>
+          <span>BUILD</span>
+          <span className="text-zinc-600">•</span>
+          <span>CONQUER</span>
+        </motion.div>
 
         {/* Subtitle */}
         <motion.p
@@ -48,7 +62,7 @@ export default function InnoVerseBanner() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-lg sm:text-xl text-zinc-400 max-w-2xl mb-4 leading-relaxed"
         >
-          Vertex's flagship technical and cultural fest is here. Explore exciting events, build your team, and showcase your talent.
+          Experience hands-on engineering challenges, competitive events, and opportunities to put your technical skills to the test.
         </motion.p>
 
         {/* Deadline Notice */}
@@ -58,7 +72,7 @@ export default function InnoVerseBanner() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mb-10 text-red-400/90 font-medium text-sm flex items-center gap-2 bg-red-500/10 border border-red-500/20 px-4 py-2 rounded-lg"
         >
-          <span>⏳</span> Registrations strictly close on September 25th
+          <span>⏳</span> Registrations strictly close on October 3rd
         </motion.div>
 
         {/* CTA Buttons */}
@@ -68,7 +82,7 @@ export default function InnoVerseBanner() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="flex flex-col sm:flex-row gap-4"
         >
-          <Link href="/innoverseRegistration">
+          <Link href="/axionRegistration">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

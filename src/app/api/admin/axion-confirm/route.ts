@@ -111,7 +111,7 @@ export async function POST(req: Request) {
     }
 
   } catch (error) {
-    console.error("[POST /api/admin/innoverse-confirm]", error);
+    console.error("[POST /api/admin/axion-confirm]", error);
     return NextResponse.json({ message: "Internal server error" }, { status: 500 });
   }
 }

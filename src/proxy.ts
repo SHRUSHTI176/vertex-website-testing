@@ -45,8 +45,9 @@ export async function proxy(request: NextRequest) {
   // ── 3. Explicitly public routes (exact match or prefix)  ─────────────────
   const isPublic =
     pathname === '/' ||
-    pathname === '/innoverseRegistration' ||
-    pathname.startsWith('/api/innoverse-register') ||
+    pathname.startsWith('/axionRegistration') ||
+    pathname.startsWith('/axion') ||
+    pathname.startsWith('/api/axion-register') ||
     pathname.startsWith('/logout') ||
     pathname.startsWith('/api/send-otp') ||
     pathname.startsWith('/api/verify-otp') ||

@@ -1,4 +1,4 @@
-// app/api/innoverse-register/route.ts
+// app/api/axion-register/route.ts
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { transporter } from "@/lib/mailer";
@@ -35,9 +35,10 @@ const eventRules: Record<
   string,
   { min?: number; max?: number; exact?: number; feeType: string; fee?: number }
 > = {
+  "hardware-expo":   { min: 2, max: 4, feeType: "per_team", fee: 100 },
   protopitch:        { min: 2, max: 4, feeType: "per_team", fee: 100 },
-  "vector-chase":    { min: 1, max: 2, feeType: "free" },
-  "embedded-enigma": { min: 1, max: 2, feeType: "free" },
+  "vector-chase":    { min: 2, max: 3, feeType: "per_team", fee: 100 },
+  "embedded-enigma": { exact: 2, feeType: "per_team", fee: 150 },
 };
 
 // ─── Validation ───────────────────────────────────────────────────────────────
@@ -88,7 +89,7 @@ function logError(tag: string, error: unknown) {
 // Instead we do sequential awaits and call this helper to undo on failure.
 
 async function rollbackRegistration(registrationId: string) {
-  console.warn(`[innoverse-register] Rolling back registration: ${registrationId}`);
+  console.warn(`[axion-register] Rolling back registration: ${registrationId}`);
   await prisma.participation.deleteMany({ where: { registrationId } }).catch((e) =>
     logError("rollback/participation", e)
   );
@@ -98,7 +99,7 @@ async function rollbackRegistration(registrationId: string) {
   await prisma.registration.delete({ where: { id: registrationId } }).catch((e) =>
     logError("rollback/registration", e)
   );
-  console.warn(`[innoverse-register] Rollback complete for: ${registrationId}`);
+  console.warn(`[axion-register] Rollback complete for: ${registrationId}`);
 }
 
 // ─── Route handler ────────────────────────────────────────────────────────────
@@ -110,7 +111,7 @@ export async function POST(req: Request) {
     // ── 1. Basic field validation ────────────────────────────────────────────
     const validationError = validateBody(body);
     if (validationError) {
-      console.warn("[innoverse-register] Validation failed:", validationError);
+      console.warn("[axion-register] Validation failed:", validationError);
       return NextResponse.json({ message: validationError }, { status: 400 });
     }
 
@@ -135,20 +136,20 @@ export async function POST(req: Request) {
     const isTeamRegistration = totalMembers > 1;
 
     console.log(
-      `[innoverse-register] Attempt | USN: ${usn} | Event: ${eventSlug} | Members: ${totalMembers}`
+      `[axion-register] Attempt | USN: ${usn} | Event: ${eventSlug} | Members: ${totalMembers}`
     );
 
     // ── 2. Resolve event ─────────────────────────────────────────────────────
     const event = await prisma.event.findUnique({ where: { slug: eventSlug } });
     if (!event) {
-      console.warn(`[innoverse-register] Event not found: ${eventSlug}`);
+      console.warn(`[axion-register] Event not found: ${eventSlug}`);
       return NextResponse.json({ message: "Event not found." }, { status: 404 });
     }
 
     // ── 3. Resolve & enforce event rules ─────────────────────────────────────
     const rule = eventRules[eventSlug.toLowerCase()];
     if (!rule) {
-      console.error(`[innoverse-register] No rules configured for event: ${eventSlug}`);
+      console.error(`[axion-register] No rules configured for event: ${eventSlug}`);
       return NextResponse.json(
         { message: "Rules for this event are not configured." },
         { status: 500 }
@@ -159,7 +160,7 @@ export async function POST(req: Request) {
     const allUsns    = [usn, ...normalizedMembers.map((m) => m.usn)];
     const uniqueUsns = new Set(allUsns);
     if (uniqueUsns.size !== allUsns.length) {
-      console.warn(`[innoverse-register] Duplicate USNs detected: ${allUsns}`);
+      console.warn(`[axion-register] Duplicate USNs detected: ${allUsns}`);
       return NextResponse.json(
         { message: "Duplicate USNs are not allowed in the same team." },
         { status: 400 }
@@ -170,7 +171,7 @@ export async function POST(req: Request) {
     if (rule.exact !== undefined) {
       if (totalMembers !== rule.exact) {
         console.warn(
-          `[innoverse-register] Size mismatch. Required: ${rule.exact}, Got: ${totalMembers}`
+          `[axion-register] Size mismatch. Required: ${rule.exact}, Got: ${totalMembers}`
         );
         return NextResponse.json(
           {
@@ -182,7 +183,7 @@ export async function POST(req: Request) {
     } else if (rule.min !== undefined && rule.max !== undefined) {
       if (totalMembers < rule.min || totalMembers > rule.max) {
         console.warn(
-          `[innoverse-register] Size out of range. Allowed: ${rule.min}–${rule.max}, Got: ${totalMembers}`
+          `[axion-register] Size out of range. Allowed: ${rule.min}–${rule.max}, Got: ${totalMembers}`
         );
         return NextResponse.json(
           {
@@ -195,7 +196,7 @@ export async function POST(req: Request) {
 
     // Team name required for multi-member registrations
     if (isTeamRegistration && !teamData?.name?.trim()) {
-      console.warn(`[innoverse-register] Team name missing for: ${eventSlug}`);
+      console.warn(`[axion-register] Team name missing for: ${eventSlug}`);
       return NextResponse.json(
         { message: "Team name is required for team events." },
         { status: 400 }
@@ -212,7 +213,7 @@ export async function POST(req: Request) {
     const totalAmount = amountINR * 100; // paise
 
     console.log(
-      `[innoverse-register] Amount: ₹${amountINR} (${totalAmount} paise) | Free: ${totalAmount === 0}`
+      `[axion-register] Amount: ₹${amountINR} (${totalAmount} paise) | Free: ${totalAmount === 0}`
     );
 
     // ── 5. Upsert leader participant ─────────────────────────────────────────
@@ -224,14 +225,14 @@ export async function POST(req: Request) {
         update: { name: fullName, email, emailVerified: true, phoneNo: phone, gender, collegeName, year, department },
       });
     } catch (err) {
-      logError("innoverse-register / upsert leader", err);
+      logError("axion-register / upsert leader", err);
       return NextResponse.json(
         { message: "Failed to save your details. Please try again." },
         { status: 500 }
       );
     }
 
-    console.log(`[innoverse-register] Leader participant ID: ${participant.id}`);
+    console.log(`[axion-register] Leader participant ID: ${participant.id}`);
 
     // ── 6. Block duplicate confirmed registrations for leader ────────────────
     const confirmedRegistrationIds = await prisma.registration
@@ -251,7 +252,7 @@ export async function POST(req: Request) {
 
     if (confirmedParticipation) {
       console.warn(
-        `[innoverse-register] Leader already confirmed | participantId: ${participant.id} | event: ${eventSlug}`
+        `[axion-register] Leader already confirmed | participantId: ${participant.id} | event: ${eventSlug}`
       );
       return NextResponse.json(
         { message: `You are already registered for ${event.name}.` },
@@ -271,10 +272,10 @@ export async function POST(req: Request) {
         },
       });
       console.log(
-        `[innoverse-register] Deleted ${leaderDelete.count} stale leader participation(s)`
+        `[axion-register] Deleted ${leaderDelete.count} stale leader participation(s)`
       );
     } catch (err) {
-      logError("innoverse-register / delete stale leader participations", err);
+      logError("axion-register / delete stale leader participations", err);
       return NextResponse.json(
         { message: "Failed to clean up your previous registration attempt. Please try again." },
         { status: 500 }
@@ -294,7 +295,7 @@ export async function POST(req: Request) {
           select: { id: true },
         });
       } catch (err) {
-        logError("innoverse-register / find member participants", err);
+        logError("axion-register / find member participants", err);
         return NextResponse.json(
           { message: "Failed to look up team member details. Please try again." },
           { status: 500 }
@@ -329,7 +330,7 @@ if (confirmedMemberParticipations.length > 0) {
     }));
 
   console.warn(
-    `[innoverse-register] ${conflicting.length} member(s) already confirmed for ${eventSlug}:`,
+    `[axion-register] ${conflicting.length} member(s) already confirmed for ${eventSlug}:`,
     conflicting
   );
 
@@ -352,10 +353,10 @@ if (confirmedMemberParticipations.length > 0) {
             },
           });
           console.log(
-            `[innoverse-register] Deleted ${memberDelete.count} stale member participation(s)`
+            `[axion-register] Deleted ${memberDelete.count} stale member participation(s)`
           );
         } catch (err) {
-          logError("innoverse-register / delete stale member participations", err);
+          logError("axion-register / delete stale member participations", err);
           return NextResponse.json(
             {
               message:
@@ -379,7 +380,7 @@ if (confirmedMemberParticipations.length > 0) {
       if (orphaned.length > 0) {
         const orphanedIds = orphaned.map((r) => r.id);
         console.log(
-          `[innoverse-register] Cancelling ${orphaned.length} orphaned PAYMENT_PENDING registration(s): ${orphanedIds}`
+          `[axion-register] Cancelling ${orphaned.length} orphaned PAYMENT_PENDING registration(s): ${orphanedIds}`
         );
 
         await prisma.payment.updateMany({
@@ -393,7 +394,7 @@ if (confirmedMemberParticipations.length > 0) {
         });
       }
     } catch (err) {
-      logError("innoverse-register / cancel orphaned registrations", err);
+      logError("axion-register / cancel orphaned registrations", err);
       return NextResponse.json(
         {
           message:
@@ -406,7 +407,7 @@ if (confirmedMemberParticipations.length > 0) {
     // ── 8b. Final safety guard before write ──────────────────────────────────
     if (isTeamRegistration && !teamData?.name?.trim()) {
       console.error(
-        "[innoverse-register] teamData.name missing before write — should not happen"
+        "[axion-register] teamData.name missing before write — should not happen"
       );
       return NextResponse.json(
         { message: "Team name is required for team events." },
@@ -429,7 +430,7 @@ if (confirmedMemberParticipations.length > 0) {
       });
 
       console.log(
-        `[innoverse-register] Registration created: ${registration.id} | Status: ${registration.status}`
+        `[axion-register] Registration created: ${registration.id} | Status: ${registration.status}`
       );
 
       let teamId: string | null = null;
@@ -454,7 +455,7 @@ if (confirmedMemberParticipations.length > 0) {
         });
 
         teamId = teamRecord.id;
-        console.log(`[innoverse-register] Team upserted: "${teamName}" | ID: ${teamId}`);
+        console.log(`[axion-register] Team upserted: "${teamName}" | ID: ${teamId}`);
 
         // 9c. Member participants + participations
         for (const member of normalizedMembers) {
@@ -486,7 +487,7 @@ if (confirmedMemberParticipations.length > 0) {
             },
           });
 
-          console.log(`[innoverse-register] Member participation created: ${member.usn}`);
+          console.log(`[axion-register] Member participation created: ${member.usn}`);
         }
       }
 
@@ -500,7 +501,7 @@ if (confirmedMemberParticipations.length > 0) {
         },
       });
 
-      console.log(`[innoverse-register] Leader participation created: ${usn}`);
+      console.log(`[axion-register] Leader participation created: ${usn}`);
 
       // 9e. Payment record
       await prisma.payment.create({
@@ -515,10 +516,10 @@ if (confirmedMemberParticipations.length > 0) {
       });
 
       console.log(
-        `[innoverse-register] Payment record created for registration: ${registration.id}`
+        `[axion-register] Payment record created for registration: ${registration.id}`
       );
     } catch (err) {
-      logError("innoverse-register / create records", err);
+      logError("axion-register / create records", err);
 
       // Manual rollback — undo everything written before the failure point
       if (registration?.id) {
@@ -531,7 +532,7 @@ if (confirmedMemberParticipations.length > 0) {
         const target = (err as any)?.meta?.target
           ? ` (conflict on: ${JSON.stringify((err as any).meta.target)})`
           : "";
-        console.error(`[innoverse-register] P2002 unique constraint${target}`);
+        console.error(`[axion-register] P2002 unique constraint${target}`);
         return NextResponse.json(
           {
             message: `A registration conflict occurred. A team member may already be registered for this event. Please check all USNs and try again.`,
@@ -611,19 +612,19 @@ if (confirmedMemberParticipations.length > 0) {
             </div>
           `,
         });
-        console.log(`[innoverse-register] Confirmation email sent to: ${email}`);
+        console.log(`[axion-register] Confirmation email sent to: ${email}`);
       } catch (mailErr) {
         // Email failure must NOT fail the registration — just log and continue
-        logError("innoverse-register / send confirmation email", mailErr);
+        logError("axion-register / send confirmation email", mailErr);
         console.warn(
-          `[innoverse-register] Email failed but registration succeeded: ${registration.id}`
+          `[axion-register] Email failed but registration succeeded: ${registration.id}`
         );
       }
     }
 
     // ── 11. Success ──────────────────────────────────────────────────────────
     console.log(
-      `[innoverse-register] SUCCESS | registrationId: ${registration.id} | amount: ${totalAmount}`
+      `[axion-register] SUCCESS | registrationId: ${registration.id} | amount: ${totalAmount}`
     );
 
     return NextResponse.json(
@@ -636,7 +637,7 @@ if (confirmedMemberParticipations.length > 0) {
     );
   } catch (error: unknown) {
     // Outermost catch — only unexpected errors reach here (e.g. malformed JSON)
-    logError("innoverse-register / outer catch", error);
+    logError("axion-register / outer catch", error);
 
     const code = (error as any)?.code as string | undefined;
 

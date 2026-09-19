@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Navbar from "./components/Navbar";
 import ChipScroll from "./components/ChipScroll";
-import InnoVerseBanner from "./components/sections/InnoVerseBanner";
+import AxionBanner from "./components/sections/AxionBanner";
 import AboutVertex from "./components/sections/AboutVertex";
 import Domains from "./components/sections/Domains";
 import Journey from "./components/journey";
@@ -16,7 +16,7 @@ export default function Home() {
     <div>
    <Navbar/>
    <ChipScroll/>
-   <InnoVerseBanner/>
+   <AxionBanner/>
    <AboutVertex/>
    <Domains/>
    <Journey/>

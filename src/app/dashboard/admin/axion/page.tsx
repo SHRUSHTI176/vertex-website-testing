@@ -1,4 +1,4 @@
-// app/dashboard/admin/innoverse/page.tsx
+// app/dashboard/admin/axion/page.tsx
 import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
@@ -170,11 +170,11 @@ function MemberRow({ member }: { member: MemberDetail }) {
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
-export default async function InnoVerseAdminPage() {
+export default async function axionAdminPage() {
   try {
-    return await InnoVerseAdminPageContent();
+    return await axionAdminPageContent();
   } catch (error: any) {
-    console.error("InnoVerseAdminPage Error:", error);
+    console.error("axionAdminPage Error:", error);
     return (
       <div className="p-10 bg-red-50 text-red-600 min-h-screen">
         <h1 className="text-2xl font-bold">Admin Page Error</h1>
@@ -189,12 +189,14 @@ export default async function InnoVerseAdminPage() {
   }
 }
 
-async function InnoVerseAdminPageContent() {
+async function axionAdminPageContent() {
 
   // ── Query ──────────────────────────────────────────────────────────────────
   // Fetch all participations (all statuses) so admin can see pending too.
   // We show registration status badge on each card so admin knows what's confirmed.
+  const AXION_SLUGS = ["hardware-expo", "embedded-enigma", "vector-chase"];
   const eventsData = await prisma.event.findMany({
+    where: { slug: { in: AXION_SLUGS } },
     orderBy: { createdAt: "asc" },
     include: {
       teams: {
@@ -341,10 +343,10 @@ async function InnoVerseAdminPageContent() {
         {/* ── Header ── */}
         <header className="border-b border-zinc-200 pb-6">
           <h1 className="text-3xl font-black text-zinc-900 tracking-tight">
-            InnoVerse 2026 — Registrations
+            Axion 2026 — Registrations
           </h1>
           <p className="text-zinc-500 mt-1 text-sm">
-            All registrations across all events · All statuses shown
+            All registrations across Axion events · All statuses shown
           </p>
 
           {/* Summary pills */}

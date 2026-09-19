@@ -12,15 +12,33 @@ async function main() {
       slug: "reeluminati",
       name: "Reeluminati",
       type: EventType.TEAM,
-      price: 0, // ₹150
+      price: 0,
     },
   });
+
+  await prisma.event.upsert({
+    where: { slug: "hardware-expo" },
+    update: {
+      name: "Hardware Expo",
+      price: 10000, // ₹100
+    },
+    create: {
+      slug: "hardware-expo",
+      name: "Hardware Expo",
+      type: EventType.TEAM,
+      price: 10000, // ₹100
+    },
+  });
+
   await prisma.event.upsert({
     where: { slug: "protopitch" },
-    update: {},
+    update: {
+      name: "Hardware Expo",
+      price: 10000, // ₹100
+    },
     create: {
       slug: "protopitch",
-      name: "Protopitch",
+      name: "Hardware Expo",
       type: EventType.TEAM,
       price: 10000, // ₹100
     },
@@ -28,23 +46,29 @@ async function main() {
 
   await prisma.event.upsert({
     where: { slug: "embedded-enigma" },
-    update: {},
+    update: {
+      name: "Embedded Enigma",
+      price: 15000, // ₹150
+    },
     create: {
       slug: "embedded-enigma",
       name: "Embedded Enigma",
       type: EventType.TEAM,
-      price: 0,
+      price: 15000, // ₹150 per team
     },
   });
 
   await prisma.event.upsert({
     where: { slug: "vector-chase" },
-    update: {},
+    update: {
+      name: "Vector Chase",
+      price: 10000, // ₹100
+    },
     create: {
       slug: "vector-chase",
       name: "Vector Chase",
       type: EventType.TEAM,
-      price: 0,
+      price: 10000, // ₹100 per team
     },
   });
 

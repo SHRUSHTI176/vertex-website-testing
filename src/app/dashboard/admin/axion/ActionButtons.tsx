@@ -10,7 +10,7 @@ export default function ActionButtons({ registrationId }: { registrationId: stri
   const handleAction = async (action: "APPROVE" | "REJECT") => {
     try {
       setLoadingAction(action);
-      const res = await fetch("/api/admin/innoverse-confirm", {
+      const res = await fetch("/api/admin/axion-confirm", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ registrationId, action }),

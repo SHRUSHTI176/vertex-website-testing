@@ -64,7 +64,7 @@ export async function POST(req: Request) {
 const uploadResult = await new Promise<any>((resolve, reject) => {
   const stream = cloudinary.uploader.upload_stream(
     {
-      folder: "innoverse2026/paymentScreenshots",
+      folder: "axion2026/paymentScreenshots",
       resource_type: "image",
       public_id: `${registrationId}_${Date.now()}`,
     },
