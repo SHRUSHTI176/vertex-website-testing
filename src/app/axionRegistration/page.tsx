@@ -183,7 +183,7 @@ export default function AxionEventHub() {
                     </div>
                     <div className="flex items-center gap-2">
                       <Tag className="w-4 h-4 text-amber-400 shrink-0" />
-                      <span><strong className="text-white">Entry Fee:</strong> ₹100 per team</span>
+                      <span><strong className="text-white">Entry Fee:</strong> free </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Trophy className="w-4 h-4 text-amber-400 shrink-0" />
@@ -200,7 +200,7 @@ export default function AxionEventHub() {
                   </div>
 
                   {/* Note Callout */}
-                  <div className="bg-amber-950/20 border-l-4 border-amber-500 rounded-r-xl p-3.5 mb-4 text-xs text-amber-200/90 leading-relaxed">
+                  <div className="bg-[#0b1020] border-l-4 border-amber-500 rounded-r-xl p-3.5 mb-4 text-xs text-amber-200/90 leading-relaxed">
                     <strong className="text-amber-300">Note:</strong> Ideal for working prototypes; any project at any development stage is welcome – hardware novel use cases and engineering depth. We value originality, technical soundness, and problem-solving capability.
                   </div>
                 </div>
@@ -279,7 +279,11 @@ export default function AxionEventHub() {
 
                 {/* Register Button */}
                 <div className="mt-4">
-                  <Link href="/axionRegistration/hardware-expo" className="block w-full">
+                <Link href="https://partner.mentorlink.in/en/application-form/qsMTpIDnjO"
+               target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full"
+>
                     <button className="w-full py-4 bg-amber-500 hover:bg-amber-400 text-black font-extrabold uppercase tracking-widest rounded-xl transition-all shadow-[0_0_25px_rgba(245,158,11,0.3)] hover:shadow-[0_0_35px_rgba(245,158,11,0.5)] cursor-pointer">
                       REGISTER NOW
                     </button>
@@ -336,7 +340,7 @@ export default function AxionEventHub() {
                     </div>
                     <div className="flex items-center gap-2">
                       <Trophy className="w-4 h-4 text-amber-400 shrink-0" />
-                      <span><strong className="text-white">Prize Pool:</strong> ₹20,000 (10k / 7k / 3k)</span>
+                      <span><strong className="text-white">Prize Pool:</strong> ₹20,000 </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Clock className="w-4 h-4 text-amber-400 shrink-0" />
@@ -345,13 +349,13 @@ export default function AxionEventHub() {
                     <div className="sm:col-span-2 flex items-center gap-2 pt-1 border-t border-zinc-800/50">
                       <Phone className="w-4 h-4 text-amber-400 shrink-0" />
                       <span>
-                        <strong className="text-white">Coordinators:</strong> Jyothika S (<a href="tel:8310325378" className="text-amber-400 hover:underline">8310325378</a>) · Shreyas J (<a href="tel:8762485683" className="text-amber-400 hover:underline">8762485683</a>)
+                        <strong className="text-white">Coordinator:</strong> Jyothika S (<a href="tel:8310325378" className="text-amber-400 ...">8310325378</a>)
                       </span>
                     </div>
                   </div>
 
                   {/* Note Callout */}
-                  <div className="bg-amber-950/20 border-l-4 border-amber-500 rounded-r-xl p-3.5 mb-4 text-xs text-amber-200/90 leading-relaxed">
+                  <div className="bg-[#0b1020] border-l-4 border-amber-500 rounded-r-xl p-3.5 mb-4 text-xs text-amber-200/90 leading-relaxed">
                     <strong className="text-amber-300">Note:</strong> Lookout on-site since your problem-solving skills, practical approach, and technical mindset are what's being tested. Minimal hardware is permitted, but intellect and a solver's mindset are paramount.
                   </div>
                 </div>
@@ -418,7 +422,12 @@ export default function AxionEventHub() {
 
                 {/* Register Button */}
                 <div className="mt-4">
-                  <Link href="/axionRegistration/embedded-enigma" className="block w-full">
+                  <Link
+  href="https://partner.mentorlink.in/en/application-form/qsMTpIDnjO"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="block w-full"
+>
                     <button className="w-full py-4 bg-amber-500 hover:bg-amber-400 text-black font-extrabold uppercase tracking-widest rounded-xl transition-all shadow-[0_0_25px_rgba(245,158,11,0.3)] hover:shadow-[0_0_35px_rgba(245,158,11,0.5)] cursor-pointer">
                       REGISTER NOW
                     </button>
@@ -475,7 +484,7 @@ export default function AxionEventHub() {
                     </div>
                     <div className="flex items-center gap-2">
                       <Trophy className="w-4 h-4 text-amber-400 shrink-0" />
-                      <span><strong className="text-white">Prize Pool:</strong> ₹15,000 (Winner: 9k | 1st: 6k)</span>
+                      <span><strong className="text-white">Prize Pool:</strong> ₹15,000 </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Clock className="w-4 h-4 text-amber-400 shrink-0" />
@@ -488,7 +497,7 @@ export default function AxionEventHub() {
                   </div>
 
                   {/* Note Callout */}
-                  <div className="bg-amber-950/20 border-l-4 border-amber-500 rounded-r-xl p-3.5 mb-4 text-xs text-amber-200/90 leading-relaxed">
+                  <div className="bg-[#0b1020] border-l-4 border-amber-500 rounded-r-xl p-3.5 mb-4 text-xs text-amber-200/90 leading-relaxed">
                     <strong className="text-amber-300">Note:</strong> A classic robotics test—agility, logic in code, and how well the hardware and its guidance mechanism work together gets you to the win! 100% autonomous bots only.
                   </div>
                 </div>
@@ -574,7 +583,12 @@ export default function AxionEventHub() {
 
                 {/* Register Button */}
                 <div className="mt-4">
-                  <Link href="/axionRegistration/vector-chase" className="block w-full">
+                  <Link
+                 href="https://partner.mentorlink.in/en/application-form/qsMTpIDnjO"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="block w-full">
+
                     <button className="w-full py-4 bg-amber-500 hover:bg-amber-400 text-black font-extrabold uppercase tracking-widest rounded-xl transition-all shadow-[0_0_25px_rgba(245,158,11,0.3)] hover:shadow-[0_0_35px_rgba(245,158,11,0.5)] cursor-pointer">
                       REGISTER NOW
                     </button>

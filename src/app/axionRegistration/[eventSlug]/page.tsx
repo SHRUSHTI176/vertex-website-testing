@@ -784,8 +784,7 @@ export default function InnoVerseRegistrationPage() {
   const grouped = CATEGORIES.map(cat => ({ cat, events: EVENTS.filter(e => e.category === cat) }));
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col items-center px-4 py-14"
-      style={{ backgroundImage: "radial-gradient(ellipse 100% 60% at 50% 0%, rgba(251,191,36,0.06), transparent 70%)" }}>
+  <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col items-center px-4 py-14">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap');
         .font-display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em; }
