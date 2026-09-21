@@ -91,7 +91,7 @@ export default function AxionBanner() {
               Register Now
             </motion.button>
           </Link>
-          <a href="https://drive.google.com/file/d/1DTBWmRSt2gY8iDVAYTbsmnojs7weL9Jt/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+          <a href="/axion-brochure.pdf" target="_blank" rel="noopener noreferrer">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

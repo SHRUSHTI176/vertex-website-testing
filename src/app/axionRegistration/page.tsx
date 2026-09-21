@@ -43,53 +43,38 @@ export default function AxionEventHub() {
           animate={{ opacity: 1, y: 0 }} 
           className="relative z-10 max-w-4xl mx-auto flex flex-col items-center"
         >
-          {/* Institution Header Tag */}
-          <div className="inline-flex items-center gap-2 border border-amber-500/30 bg-amber-500/10 text-amber-400 text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] px-4 py-1.5 rounded-full mb-4 shadow-[0_0_20px_rgba(245,158,11,0.15)]">
-            <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-            DAYANANDA SAGAR COLLEGE OF ENGINEERING
+          {/* Main Event Header Banner */}
+          <div className="relative w-full max-w-4xl mx-auto rounded-2xl overflow-hidden border border-zinc-800/80 shadow-[0_0_50px_rgba(245,158,11,0.15)] group">
+            <Image 
+              src="/images/events/axion-hero-banner.png" 
+              alt="AXION 2026 - Dayananda Sagar College of Engineering" 
+              width={1024}
+              height={598}
+              className="w-full h-auto object-contain rounded-2xl group-hover:scale-[1.01] transition-transform duration-500" 
+              priority
+            />
           </div>
 
-          <p className="text-zinc-400 text-xs sm:text-sm font-semibold tracking-widest uppercase mb-4 text-center">
-            Dept. of Electronics and Telecommunication Engg · Vertex Presents
-          </p>
-
-          {/* AXION Title Banner Graphic */}
-          <div className="relative w-full max-w-2xl my-2 rounded-2xl overflow-hidden border border-zinc-800/80 shadow-[0_0_50px_rgba(245,158,11,0.15)] group">
-            <div className="relative w-full h-44 sm:h-60 md:h-72">
-              <Image 
-                src="/images/events/axion-banner.png" 
-                alt="AXION - Innovate Build Conquer" 
-                fill 
-                className="object-cover object-center group-hover:scale-[1.02] transition-transform duration-500" 
-                priority
-              />
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 pointer-events-none" />
+          {/* Guidelines & Brochure Buttons */}
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+            <button
+              onClick={() => setShowGeneralGuidelines(!showGeneralGuidelines)}
+              className="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-700/60 text-zinc-300 hover:text-amber-400 hover:border-amber-500/50 transition-all cursor-pointer"
+            >
+              <FileText className="w-4 h-4 text-amber-400" />
+              <span>{showGeneralGuidelines ? "Hide General Guidelines" : "Read General Guidelines (All Events)"}</span>
+              {showGeneralGuidelines ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+            </button>
+            <a
+              href="/axion-brochure.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 hover:bg-amber-500/20 hover:border-amber-500/50 transition-all cursor-pointer"
+            >
+              <FileText className="w-4 h-4 text-amber-400" />
+              <span>View Brochure</span>
+            </a>
           </div>
-
-          {/* Tagline & Subtitle */}
-          <div className="mt-6 space-y-2">
-            <div className="inline-flex items-center gap-3 text-amber-400 text-xs sm:text-sm font-black tracking-[0.3em] uppercase">
-              <span>INNOVATE</span>
-              <span className="text-zinc-600">•</span>
-              <span>BUILD</span>
-              <span className="text-zinc-600">•</span>
-              <span>CONQUER</span>
-            </div>
-            <p className="text-zinc-400 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-              Experience hands-on engineering challenges, competitive events, and opportunities to put your technical skills to the test.
-            </p>
-          </div>
-
-          {/* General Guidelines Button Toggle */}
-          <button
-            onClick={() => setShowGeneralGuidelines(!showGeneralGuidelines)}
-            className="mt-6 inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-700/60 text-zinc-300 hover:text-amber-400 hover:border-amber-500/50 transition-all cursor-pointer"
-          >
-            <FileText className="w-4 h-4 text-amber-400" />
-            <span>{showGeneralGuidelines ? "Hide General Guidelines" : "Read General Guidelines (All Events)"}</span>
-            {showGeneralGuidelines ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
-          </button>
         </motion.div>
       </section>
 
