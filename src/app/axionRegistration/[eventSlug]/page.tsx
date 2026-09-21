@@ -362,8 +362,8 @@ function Field({
 }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label htmlFor={id} className="text-[11px] font-bold tracking-[0.12em] text-amber-400/70 uppercase flex items-center gap-1">
-        {label}{required && <span className="text-amber-400">*</span>}
+      <label htmlFor={id} className="text-[11px] font-bold tracking-[0.12em] text-cyan-400/70 uppercase flex items-center gap-1">
+        {label}{required && <span className="text-cyan-400">*</span>}
         {hint && <span className="text-zinc-500 normal-case tracking-normal font-normal ml-1">— {hint}</span>}
       </label>
       {children}
@@ -385,7 +385,7 @@ type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
 function Input({ className = "", ...p }: InputProps) {
   return (
     <input
-      className={`w-full bg-zinc-900 border border-zinc-700 text-zinc-100 placeholder-zinc-600 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500/30 transition-all disabled:opacity-40 disabled:cursor-not-allowed ${className}`}
+      className={`w-full bg-zinc-900 border border-zinc-700 text-zinc-100 placeholder-zinc-600 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 transition-all disabled:opacity-40 disabled:cursor-not-allowed ${className}`}
       {...p}
     />
   );
@@ -440,7 +440,7 @@ function OtpInput({ value, onChange, disabled }: { value: string; onChange: (v: 
           key={i} ref={el => { refs.current[i] = el; }}
           type="text" inputMode="numeric" maxLength={1} value={d} disabled={disabled}
           onChange={e => onCh(i, e.target.value)} onKeyDown={e => onKd(i, e)} onPaste={onPaste}
-          className={`w-11 h-12 text-center text-lg font-bold rounded-lg border bg-zinc-900 text-white caret-transparent transition-all focus:outline-none disabled:opacity-40 ${d ? "border-amber-500 ring-1 ring-amber-500/30" : "border-zinc-700 focus:border-amber-500"}`}
+          className={`w-11 h-12 text-center text-lg font-bold rounded-lg border bg-zinc-900 text-white caret-transparent transition-all focus:outline-none disabled:opacity-40 ${d ? "border-cyan-500 ring-1 ring-cyan-500/30" : "border-zinc-700 focus:border-cyan-500"}`}
         />
       ))}
     </div>
@@ -492,9 +492,9 @@ function QrScreen({
 
   return (
     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col gap-6">
-      <div className="bg-amber-950/30 border border-amber-700/40 rounded-xl p-5 flex items-center justify-between">
+      <div className="bg-cyan-950/30 border border-cyan-700/40 rounded-xl p-5 flex items-center justify-between">
         <div>
-          <p className="text-xs text-amber-500 font-bold uppercase tracking-widest mb-1">Amount Due</p>
+          <p className="text-xs text-cyan-500 font-bold uppercase tracking-widest mb-1">Amount Due</p>
           <p className="text-4xl font-black text-white font-display">{formatINR(amount)}</p>
           <p className="text-xs text-zinc-500 mt-1">{eventName}</p>
         </div>
@@ -512,7 +512,7 @@ function QrScreen({
         <p className="text-xs text-zinc-500 text-center max-w-xs leading-relaxed">
           GPay · PhonePe · Paytm. After paying, upload your screenshot below.
         </p>
-        <p className="text-xs text-amber-400 font-semibold">⚠ Do not close this page</p>
+        <p className="text-xs text-cyan-400 font-semibold">⚠ Do not close this page</p>
       </div>
 
       <div className="h-px bg-zinc-800" />
@@ -521,10 +521,10 @@ function QrScreen({
         <p className="text-xs font-bold uppercase tracking-widest text-zinc-500">Upload Screenshot</p>
         <div
           onClick={() => ref.current?.click()}
-          className={`border-2 border-dashed rounded-xl p-6 flex flex-col items-center gap-3 cursor-pointer transition-all ${file ? "border-amber-500/50 bg-amber-950/10" : "border-zinc-700 hover:border-zinc-600 bg-zinc-900/40"}`}
+          className={`border-2 border-dashed rounded-xl p-6 flex flex-col items-center gap-3 cursor-pointer transition-all ${file ? "border-cyan-500/50 bg-cyan-950/10" : "border-zinc-700 hover:border-zinc-600 bg-zinc-900/40"}`}
         >
           {preview
-            ? <><img src={preview} className="max-h-40 rounded-lg object-contain" /><p className="text-xs text-amber-400">{file?.name}</p></>
+            ? <><img src={preview} className="max-h-40 rounded-lg object-contain" /><p className="text-xs text-cyan-400">{file?.name}</p></>
             : <><div className="text-3xl">📎</div><p className="text-sm text-zinc-400">Click to select</p><p className="text-xs text-zinc-600">JPG · PNG · WebP · Max {MAX_SS_MB}MB</p></>
           }
         </div>
@@ -535,7 +535,7 @@ function QrScreen({
         <div className="flex gap-3">
           <button
             onClick={submit} disabled={!file || busy}
-            className={`flex-1 py-3.5 rounded-xl text-sm font-bold tracking-wide flex items-center justify-center gap-2 transition-all ${file && !busy ? "bg-amber-500 hover:bg-amber-400 text-black" : "bg-zinc-800 text-zinc-600 cursor-not-allowed"}`}
+            className={`flex-1 py-3.5 rounded-xl text-sm font-bold tracking-wide flex items-center justify-center gap-2 transition-all ${file && !busy ? "bg-cyan-500 hover:bg-cyan-400 text-black" : "bg-zinc-800 text-zinc-600 cursor-not-allowed"}`}
           >
             {busy ? <><Spinner size="sm" /> Uploading…</> : "Submit for Verification"}
           </button>
@@ -564,8 +564,8 @@ function SuccessScreen({ email, eventName, onReset }: { email: string; eventName
       <div>
         <h2 className="text-2xl font-black text-white font-display mb-2">You're In!</h2>
         <p className="text-zinc-400 text-sm max-w-xs leading-relaxed mx-auto">
-          Registration for <span className="text-amber-400 font-semibold">{eventName}</span> submitted.
-          Confirmation will be sent to <span className="text-amber-400 font-semibold">{email}</span> within 24 hours.
+          Registration for <span className="text-cyan-400 font-semibold">{eventName}</span> submitted.
+          Confirmation will be sent to <span className="text-cyan-400 font-semibold">{email}</span> within 24 hours.
         </p>
       </div>
 
@@ -573,7 +573,7 @@ function SuccessScreen({ email, eventName, onReset }: { email: string; eventName
         <p className="text-xs font-bold uppercase tracking-widest text-zinc-600">What's Next</p>
         {["Our team reviews your payment", "Confirmation email within 24hrs", "Your spot is reserved"].map((s, i) => (
           <div key={i} className="flex items-start gap-3">
-            <span className="w-5 h-5 rounded-full bg-amber-500/20 text-amber-400 text-xs flex items-center justify-center flex-shrink-0 font-bold mt-0.5">{i + 1}</span>
+            <span className="w-5 h-5 rounded-full bg-cyan-500/20 text-cyan-400 text-xs flex items-center justify-center flex-shrink-0 font-bold mt-0.5">{i + 1}</span>
             <p className="text-xs text-zinc-400 leading-relaxed">{s}</p>
           </div>
         ))}
@@ -796,12 +796,12 @@ export default function InnoVerseRegistrationPage() {
 
         {/* ── Header ── */}
         <motion.div initial={{ opacity: 0, y: -24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 border border-amber-500/30 bg-amber-500/10 text-amber-400 text-xs font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+          <div className="inline-flex items-center gap-2 border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-xs font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
             {selectedEvent ? `Registering for ${selectedEvent.label}` : "Registrations Open"}
           </div>
           <h1 className="font-display text-5xl sm:text-7xl text-white mb-2 leading-none uppercase">
-            {selectedEvent ? selectedEvent.label : <>AXION <span className="text-amber-400">2026</span></>}
+            {selectedEvent ? selectedEvent.label : <>AXION <span className="text-cyan-400">2026</span></>}
           </h1>
           <p className="text-zinc-400 text-sm">{selectedEvent ? selectedEvent.category : "INNOVATE • BUILD • CONQUER"} · Dayananda Sagar College of Engineering</p>
         </motion.div>
@@ -812,7 +812,7 @@ export default function InnoVerseRegistrationPage() {
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}
           className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden shadow-2xl shadow-black/60"
         >
-          <div className="h-0.5 bg-gradient-to-r from-amber-600 via-yellow-400 to-amber-600" />
+          <div className="h-0.5 bg-gradient-to-r from-cyan-600 via-yellow-400 to-cyan-600" />
 
           <div className="p-6 sm:p-8">
             <AnimatePresence mode="wait">
@@ -921,7 +921,7 @@ export default function InnoVerseRegistrationPage() {
                           onChange={e => patch({ phone: e.target.value })} onBlur={() => touch("phone")} />
                       </Field>
                       <Field label="Gender" id="gender" required error={touched.gender ? errors.gender : ""}>
-                        <select id="gender" value={form.gender} onChange={e => patch({ gender: e.target.value })} onBlur={() => touch("gender")} className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500/30">
+                        <select id="gender" value={form.gender} onChange={e => patch({ gender: e.target.value })} onBlur={() => touch("gender")} className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30">
                           <option value="">Select Gender</option>
                           <option value="Male">Male</option>
                           <option value="Female">Female</option>
@@ -933,7 +933,7 @@ export default function InnoVerseRegistrationPage() {
                         <Input id="collegeName" type="text" placeholder="e.g. Dayananda Sagar" value={form.collegeName} onChange={e => patch({ collegeName: e.target.value })} onBlur={() => touch("collegeName")} />
                       </Field>
                       <Field label="Year" id="year" required error={touched.year ? errors.year : ""}>
-                        <select id="year" value={form.year} onChange={e => patch({ year: e.target.value })} onBlur={() => touch("year")} className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500/30">
+                        <select id="year" value={form.year} onChange={e => patch({ year: e.target.value })} onBlur={() => touch("year")} className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30">
                           <option value="">Select Year</option>
                           <option value="1">1st Year</option>
                           <option value="2">2nd Year</option>
@@ -942,7 +942,7 @@ export default function InnoVerseRegistrationPage() {
                         </select>
                       </Field>
                       <Field label="Department" id="department" required error={touched.department ? errors.department : ""}>
-                        <select id="department" value={form.department} onChange={e => patch({ department: e.target.value })} onBlur={() => touch("department")} className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500/30">
+                        <select id="department" value={form.department} onChange={e => patch({ department: e.target.value })} onBlur={() => touch("department")} className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30">
                           <option value="">Select Department</option>
                           {[
                             { value: "AIML", label: "AIML - Artificial Intelligence & Machine Learning" },
@@ -983,7 +983,7 @@ export default function InnoVerseRegistrationPage() {
                           className="flex-1" />
                         {!["verified", "otp_sent", "verifying"].includes(emailVerif.status) && (
                           <button onClick={sendOtp} disabled={emailVerif.status === "sending" || !!errors.email}
-                            className="px-4 py-3 bg-amber-500 hover:bg-amber-400 disabled:opacity-40 disabled:cursor-not-allowed text-black text-sm font-bold rounded-lg transition-colors whitespace-nowrap flex items-center gap-2">
+                            className="px-4 py-3 bg-cyan-500 hover:bg-cyan-400 disabled:opacity-40 disabled:cursor-not-allowed text-black text-sm font-bold rounded-lg transition-colors whitespace-nowrap flex items-center gap-2">
                             {emailVerif.status === "sending" ? <><Spinner size="sm" /> …</> : "Send OTP"}
                           </button>
                         )}
@@ -994,16 +994,16 @@ export default function InnoVerseRegistrationPage() {
                       {(emailVerif.status === "otp_sent" || emailVerif.status === "verifying") && (
                         <motion.div key="otp" initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden">
                           <div className="bg-zinc-800/60 border border-zinc-700 rounded-xl p-5 flex flex-col gap-4">
-                            <p className="text-xs text-zinc-400">OTP sent to <span className="text-amber-400 font-semibold">{form.email}</span></p>
+                            <p className="text-xs text-zinc-400">OTP sent to <span className="text-cyan-400 font-semibold">{form.email}</span></p>
                             <OtpInput value={otp} onChange={v => { setOtp(v); if (otpErr) setOtpErr(""); }} disabled={emailVerif.status === "verifying"} />
                             {otpErr && <p className="text-xs text-red-400">✗ {otpErr}</p>}
                             <div className="flex flex-wrap gap-3 items-center">
                               <button onClick={verifyOtp} disabled={emailVerif.status === "verifying" || otp.length !== OTP_LENGTH}
-                                className="px-5 py-2.5 bg-amber-500 hover:bg-amber-400 disabled:opacity-40 disabled:cursor-not-allowed text-black text-sm font-bold rounded-lg transition-colors flex items-center gap-2">
+                                className="px-5 py-2.5 bg-cyan-500 hover:bg-cyan-400 disabled:opacity-40 disabled:cursor-not-allowed text-black text-sm font-bold rounded-lg transition-colors flex items-center gap-2">
                                 {emailVerif.status === "verifying" ? <><Spinner size="sm" /> Verifying…</> : "Verify"}
                               </button>
                               <button onClick={resendOtp} disabled={emailVerif.resendCooldown > 0 || emailVerif.status === "verifying"}
-                                className="text-xs text-zinc-500 hover:text-amber-400 disabled:opacity-40 transition-colors">
+                                className="text-xs text-zinc-500 hover:text-cyan-400 disabled:opacity-40 transition-colors">
                                 {emailVerif.resendCooldown > 0 ? `Resend in ${emailVerif.resendCooldown}s` : "Resend"}
                               </button>
                               <button onClick={resetEmailFlow} className="text-xs text-zinc-600 hover:text-zinc-400 ml-auto transition-colors">← Change email</button>
@@ -1044,7 +1044,7 @@ export default function InnoVerseRegistrationPage() {
                           </div>
                           <div className="text-right">
                             <p className="text-xs text-zinc-500 mb-0.5">Total</p>
-                            <p className="text-xl font-black text-amber-400 font-display">{formatINR(totalPaise)}</p>
+                            <p className="text-xl font-black text-cyan-400 font-display">{formatINR(totalPaise)}</p>
                             {selectedEvent.feeType === "per_person" && (
                               <p className="text-xs text-zinc-600">₹{selectedEvent.fee} × {totalMembers} member{totalMembers !== 1 ? "s" : ""}</p>
                             )}
@@ -1086,7 +1086,7 @@ export default function InnoVerseRegistrationPage() {
                             <div className="flex items-center justify-between">
                               <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-zinc-600">
                                 Teammates{" "}
-                                <span className="text-amber-400 normal-case tracking-normal">
+                                <span className="text-cyan-400 normal-case tracking-normal">
                                   ({form.teamMembers.length} of {maxTm})
                                 </span>
                               </p>
@@ -1095,7 +1095,7 @@ export default function InnoVerseRegistrationPage() {
                                 {eventCanHaveTeam && form.teamMembers.length < maxTm && (
                                   <button
                                     onClick={addMember}
-                                    className="text-xs font-bold text-amber-400 hover:text-amber-300 transition-colors flex items-center gap-1"
+                                    className="text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1"
                                   >
                                     + Add teammate
                                   </button>
@@ -1143,7 +1143,7 @@ export default function InnoVerseRegistrationPage() {
                                   </div>
                                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
                                     <Field label="Gender" id={`mg-${i}`} required error={touched[`m${i}`] ? memberErrors[i]?.gender : undefined}>
-                                      <select id={`mg-${i}`} value={m.gender} onChange={e => updateMember(i, "gender", e.target.value)} onBlur={() => setTouched(p => ({ ...p, [`m${i}`]: true }))} className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500/30">
+                                      <select id={`mg-${i}`} value={m.gender} onChange={e => updateMember(i, "gender", e.target.value)} onBlur={() => setTouched(p => ({ ...p, [`m${i}`]: true }))} className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30">
                                         <option value="">Select Gender</option>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
@@ -1157,7 +1157,7 @@ export default function InnoVerseRegistrationPage() {
                                   </div>
                                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                     <Field label="Year" id={`my-${i}`} required error={touched[`m${i}`] ? memberErrors[i]?.year : undefined}>
-                                      <select id={`my-${i}`} value={m.year} onChange={e => updateMember(i, "year", e.target.value)} onBlur={() => setTouched(p => ({ ...p, [`m${i}`]: true }))} className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500/30">
+                                      <select id={`my-${i}`} value={m.year} onChange={e => updateMember(i, "year", e.target.value)} onBlur={() => setTouched(p => ({ ...p, [`m${i}`]: true }))} className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30">
                                         <option value="">Select Year</option>
                                         <option value="1">1st Year</option>
                                         <option value="2">2nd Year</option>
@@ -1166,7 +1166,7 @@ export default function InnoVerseRegistrationPage() {
                                       </select>
                                     </Field>
                                     <Field label="Department" id={`md-${i}`} required error={touched[`m${i}`] ? memberErrors[i]?.department : undefined}>
-                                      <select id={`md-${i}`} value={m.department} onChange={e => updateMember(i, "department", e.target.value)} onBlur={() => setTouched(p => ({ ...p, [`m${i}`]: true }))} className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500/30">
+                                      <select id={`md-${i}`} value={m.department} onChange={e => updateMember(i, "department", e.target.value)} onBlur={() => setTouched(p => ({ ...p, [`m${i}`]: true }))} className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30">
                                         <option value="">Select Department</option>
                                         {[
                                           { value: "AIML", label: "AIML - Artificial Intelligence & Machine Learning" },
@@ -1214,7 +1214,7 @@ export default function InnoVerseRegistrationPage() {
                       >
                         <button
                           onClick={addMember}
-                          className="w-full border border-dashed border-zinc-700 hover:border-amber-500/50 hover:bg-amber-500/5 text-zinc-600 hover:text-amber-400 text-xs font-bold uppercase tracking-widest rounded-xl py-3 transition-all"
+                          className="w-full border border-dashed border-zinc-700 hover:border-cyan-500/50 hover:bg-cyan-500/5 text-zinc-600 hover:text-cyan-400 text-xs font-bold uppercase tracking-widest rounded-xl py-3 transition-all"
                         >
                           + Add teammates (optional · up to {maxTm})
                         </button>
@@ -1251,7 +1251,7 @@ export default function InnoVerseRegistrationPage() {
                       whileTap={isFormValid ? { scale: 0.985 } : {}}
                       onClick={submit}
                       className={`w-full py-4 rounded-xl text-base font-black font-display tracking-wider transition-all flex items-center justify-center gap-2 ${isFormValid
-                        ? "bg-amber-500 hover:bg-amber-400 text-black shadow-lg shadow-amber-500/20"
+                        ? "bg-cyan-500 hover:bg-cyan-400 text-black shadow-lg shadow-cyan-500/20"
                         : "bg-zinc-800 text-zinc-600 cursor-not-allowed"
                         }`}
                     >
