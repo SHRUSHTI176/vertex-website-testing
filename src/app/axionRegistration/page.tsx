@@ -7,7 +7,6 @@ import Image from "next/image";
 import Navbar from "../components/Navbar";
 import { 
   Users, 
-  Trophy, 
   Phone, 
   ChevronDown, 
   ChevronUp, 
@@ -118,6 +117,9 @@ export default function AxionEventHub() {
                   </p>
                 </div>
               </div>
+              <div className="mt-4 pt-3 border-t border-zinc-800/60 flex items-center gap-2 text-xs sm:text-sm text-amber-300 font-medium">
+                <span>📌 Refer brochure for detailed rules.</span>
+              </div>
             </div>
           </motion.section>
         )}
@@ -157,7 +159,7 @@ export default function AxionEventHub() {
 
                   {/* Overview description */}
                   <p className="text-zinc-300 text-sm leading-relaxed mb-6">
-                    A venue college-level competition where teams showcase physical engineering prototypes, undergo demonstrations before hardware experts and tech judges, and pitch the real-world applicability of their projects.
+                    A college-level competition where teams showcase physical engineering prototypes, undergo demonstrations before hardware experts and tech judges, and pitch the real-world applicability of their projects.
                   </p>
 
                   {/* Specs & Metadata Grid */}
@@ -171,14 +173,10 @@ export default function AxionEventHub() {
                       <span><strong className="text-white">Entry Fee:</strong> free </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Trophy className="w-4 h-4 text-amber-400 shrink-0" />
-                      <span><strong className="text-white">Prize Pool:</strong> ₹15,000</span>
-                    </div>
-                    <div className="flex items-center gap-2">
                       <Clock className="w-4 h-4 text-amber-400 shrink-0" />
                       <span><strong className="text-white">Finalists:</strong> Top 20 teams</span>
                     </div>
-                    <div className="sm:col-span-2 flex items-center gap-2 pt-1 border-t border-zinc-800/50">
+                    <div className="flex items-center gap-2">
                       <Phone className="w-4 h-4 text-amber-400 shrink-0" />
                       <span><strong className="text-white">Coordinator:</strong> Dhruva J H (<a href="tel:6361536637" className="text-amber-400 hover:underline">6361536637</a>)</span>
                     </div>
@@ -186,7 +184,7 @@ export default function AxionEventHub() {
 
                   {/* Note Callout */}
                   <div className="bg-[#0b1020] border-l-4 border-amber-500 rounded-r-xl p-3.5 mb-4 text-xs text-amber-200/90 leading-relaxed">
-                    <strong className="text-amber-300">Note:</strong> Ideal for working prototypes; any project at any development stage is welcome – hardware novel use cases and engineering depth. We value originality, technical soundness, and problem-solving capability.
+                    <strong className="text-amber-300">Note:</strong> Ideal for working prototypes; any project at any development stage is welcome – hardware, novel use cases and engineering depth. We value originality, technical soundness, and problem-solving capability.
                   </div>
                 </div>
 
@@ -211,8 +209,8 @@ export default function AxionEventHub() {
                         <div>
                           <p className="font-bold text-amber-400 mb-1">Competition Tracks:</p>
                           <ul className="list-disc pl-5 space-y-1 text-zinc-400">
-                            <li><strong className="text-zinc-200">1. Intelligent Systems & Automation:</strong> Robotics, Edge AI & TinyML, Sustainable Tech (1st: ₹6,000 | 2nd: ₹4,000)</li>
-                            <li><strong className="text-zinc-200">2. Open Innovation:</strong> Commercially viable engineering projects bridging academic concepts (Prize: ₹5,000)</li>
+                            <li><strong className="text-zinc-200">1. Intelligent Systems & Automation:</strong> Robotics, Edge AI & TinyML, Sustainable Tech</li>
+                            <li><strong className="text-zinc-200">2. Open Innovation:</strong> Commercially viable engineering projects bridging academic concepts</li>
                           </ul>
                         </div>
                         <div>
@@ -228,6 +226,9 @@ export default function AxionEventHub() {
                             Functionality: 25% · Complexity: 25% · Build Quality: 20% · Innovation & Cost: 15% · Pitch: 15%
                           </p>
                         </div>
+                        <div className="pt-2 border-t border-zinc-800/60 text-amber-300/90 font-medium">
+                          📌 Refer brochure for detailed rules.
+                        </div>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -236,29 +237,25 @@ export default function AxionEventHub() {
 
               {/* Right Column: Visual Card with Image & Register CTA */}
               <div className="lg:w-72 shrink-0 flex flex-col justify-between items-stretch">
-                <div className="relative rounded-2xl overflow-hidden border-2 border-amber-500/40 bg-zinc-950 p-2 shadow-[0_0_25px_rgba(245,158,11,0.15)] group-hover:border-amber-400 transition-colors">
-                  {/* Decorative Corner Accents */}
-                  <div className="absolute top-1 left-1 w-3 h-3 border-t-2 border-l-2 border-amber-400 z-20 pointer-events-none" />
-                  <div className="absolute top-1 right-1 w-3 h-3 border-t-2 border-r-2 border-amber-400 z-20 pointer-events-none" />
-                  <div className="absolute bottom-1 left-1 w-3 h-3 border-b-2 border-l-2 border-amber-400 z-20 pointer-events-none" />
-                  <div className="absolute bottom-1 right-1 w-3 h-3 border-b-2 border-r-2 border-amber-400 z-20 pointer-events-none" />
-
+                <div className="relative rounded-2xl overflow-hidden border border-zinc-800/80 bg-gradient-to-b from-zinc-900/80 via-zinc-950/90 to-zinc-950 p-3 shadow-xl backdrop-blur-md group-hover:border-zinc-700 transition-all duration-300">
                   {/* Header overlay on card */}
-                  <div className="py-2 px-3 text-center">
-                    <h3 className="font-black text-amber-400 text-sm tracking-wider uppercase">
+                  <div className="pb-2.5 px-1 flex items-center justify-between">
+                    <span className="text-[11px] font-extrabold tracking-[0.2em] text-amber-400 uppercase flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
                       HARDWARE EXPO
-                    </h3>
+                    </span>
+                    <span className="text-[10px] text-zinc-500 uppercase font-mono tracking-wider">EVENT</span>
                   </div>
 
                   {/* Image container */}
-                  <div className="relative w-full h-44 rounded-xl overflow-hidden bg-zinc-900">
+                  <div className="relative w-full h-44 rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800/60 group-hover:border-zinc-700/80 transition-colors">
                     <Image
                       src="/images/events/hardware-expo.jpg"
                       alt="Hardware Expo Prototype"
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none" />
                   </div>
                 </div>
 
@@ -324,17 +321,13 @@ export default function AxionEventHub() {
                       <span><strong className="text-white">Registration Fee:</strong> ₹150 per team</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Trophy className="w-4 h-4 text-amber-400 shrink-0" />
-                      <span><strong className="text-white">Prize Pool:</strong> ₹20,000 </span>
-                    </div>
-                    <div className="flex items-center gap-2">
                       <Clock className="w-4 h-4 text-amber-400 shrink-0" />
                       <span><strong className="text-white">Format:</strong> 4 Elimination Rounds</span>
                     </div>
-                    <div className="sm:col-span-2 flex items-center gap-2 pt-1 border-t border-zinc-800/50">
+                    <div className="flex items-center gap-2">
                       <Phone className="w-4 h-4 text-amber-400 shrink-0" />
                       <span>
-                        <strong className="text-white">Coordinator:</strong> Jyothika S (<a href="tel:8310325378" className="text-amber-400 ...">8310325378</a>)
+                        <strong className="text-white">Coordinator:</strong> Jyothika S (<a href="tel:8310325378" className="text-amber-400 hover:underline">8310325378</a>)
                       </span>
                     </div>
                   </div>
@@ -371,6 +364,9 @@ export default function AxionEventHub() {
                           <li>Completed solutions must be verified by an organizer before proceeding.</li>
                           <li>Latecomers will not receive additional time.</li>
                         </ul>
+                        <div className="pt-2 border-t border-zinc-800/60 text-amber-300/90 font-medium">
+                          📌 Refer brochure for detailed rules.
+                        </div>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -379,29 +375,25 @@ export default function AxionEventHub() {
 
               {/* Right Column: Visual Card with Image & Register CTA */}
               <div className="lg:w-72 shrink-0 flex flex-col justify-between items-stretch">
-                <div className="relative rounded-2xl overflow-hidden border-2 border-amber-500/40 bg-zinc-950 p-2 shadow-[0_0_25px_rgba(245,158,11,0.15)] group-hover:border-amber-400 transition-colors">
-                  {/* Decorative Corner Accents */}
-                  <div className="absolute top-1 left-1 w-3 h-3 border-t-2 border-l-2 border-amber-400 z-20 pointer-events-none" />
-                  <div className="absolute top-1 right-1 w-3 h-3 border-t-2 border-r-2 border-amber-400 z-20 pointer-events-none" />
-                  <div className="absolute bottom-1 left-1 w-3 h-3 border-b-2 border-l-2 border-amber-400 z-20 pointer-events-none" />
-                  <div className="absolute bottom-1 right-1 w-3 h-3 border-b-2 border-r-2 border-amber-400 z-20 pointer-events-none" />
-
+                <div className="relative rounded-2xl overflow-hidden border border-zinc-800/80 bg-gradient-to-b from-zinc-900/80 via-zinc-950/90 to-zinc-950 p-3 shadow-xl backdrop-blur-md group-hover:border-zinc-700 transition-all duration-300">
                   {/* Header overlay on card */}
-                  <div className="py-2 px-3 text-center">
-                    <h3 className="font-black text-amber-400 text-sm tracking-wider uppercase">
+                  <div className="pb-2.5 px-1 flex items-center justify-between">
+                    <span className="text-[11px] font-extrabold tracking-[0.2em] text-amber-400 uppercase flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
                       EMBEDDED ENIGMA
-                    </h3>
+                    </span>
+                    <span className="text-[10px] text-zinc-500 uppercase font-mono tracking-wider">EVENT</span>
                   </div>
 
                   {/* Image container */}
-                  <div className="relative w-full h-44 rounded-xl overflow-hidden bg-zinc-900">
+                  <div className="relative w-full h-44 rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800/60 group-hover:border-zinc-700/80 transition-colors">
                     <Image
                       src="/images/events/embedded-enigma.jpg"
                       alt="Embedded Enigma Hardware Challenge"
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none" />
                   </div>
                 </div>
 
@@ -468,14 +460,10 @@ export default function AxionEventHub() {
                       <span><strong className="text-white">Entry Fee:</strong> ₹100 per team</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Trophy className="w-4 h-4 text-amber-400 shrink-0" />
-                      <span><strong className="text-white">Prize Pool:</strong> ₹15,000 </span>
-                    </div>
-                    <div className="flex items-center gap-2">
                       <Clock className="w-4 h-4 text-amber-400 shrink-0" />
                       <span><strong className="text-white">Trials:</strong> 3 official runs</span>
                     </div>
-                    <div className="sm:col-span-2 flex items-center gap-2 pt-1 border-t border-zinc-800/50">
+                    <div className="flex items-center gap-2">
                       <Phone className="w-4 h-4 text-amber-400 shrink-0" />
                       <span><strong className="text-white">Coordinator:</strong> Aditya Venkatesh (<a href="tel:9740768828" className="text-amber-400 hover:underline">9740768828</a>)</span>
                     </div>
@@ -532,6 +520,9 @@ export default function AxionEventHub() {
                             </div>
                           </div>
                         </div>
+                        <div className="pt-2 border-t border-zinc-800/60 text-amber-300/90 font-medium">
+                          📌 Refer brochure for detailed rules.
+                        </div>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -540,29 +531,25 @@ export default function AxionEventHub() {
 
               {/* Right Column: Visual Card with Image & Register CTA */}
               <div className="lg:w-72 shrink-0 flex flex-col justify-between items-stretch">
-                <div className="relative rounded-2xl overflow-hidden border-2 border-amber-500/40 bg-zinc-950 p-2 shadow-[0_0_25px_rgba(245,158,11,0.15)] group-hover:border-amber-400 transition-colors">
-                  {/* Decorative Corner Accents */}
-                  <div className="absolute top-1 left-1 w-3 h-3 border-t-2 border-l-2 border-amber-400 z-20 pointer-events-none" />
-                  <div className="absolute top-1 right-1 w-3 h-3 border-t-2 border-r-2 border-amber-400 z-20 pointer-events-none" />
-                  <div className="absolute bottom-1 left-1 w-3 h-3 border-b-2 border-l-2 border-amber-400 z-20 pointer-events-none" />
-                  <div className="absolute bottom-1 right-1 w-3 h-3 border-b-2 border-r-2 border-amber-400 z-20 pointer-events-none" />
-
+                <div className="relative rounded-2xl overflow-hidden border border-zinc-800/80 bg-gradient-to-b from-zinc-900/80 via-zinc-950/90 to-zinc-950 p-3 shadow-xl backdrop-blur-md group-hover:border-zinc-700 transition-all duration-300">
                   {/* Header overlay on card */}
-                  <div className="py-2 px-3 text-center">
-                    <h3 className="font-black text-amber-400 text-sm tracking-wider uppercase">
+                  <div className="pb-2.5 px-1 flex items-center justify-between">
+                    <span className="text-[11px] font-extrabold tracking-[0.2em] text-amber-400 uppercase flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
                       VECTOR CHASE
-                    </h3>
+                    </span>
+                    <span className="text-[10px] text-zinc-500 uppercase font-mono tracking-wider">EVENT</span>
                   </div>
 
                   {/* Image container */}
-                  <div className="relative w-full h-44 rounded-xl overflow-hidden bg-zinc-900">
+                  <div className="relative w-full h-44 rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800/60 group-hover:border-zinc-700/80 transition-colors">
                     <Image
                       src="/images/events/vector-chase.png"
                       alt="Vector Chase Autonomous Robot"
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none" />
                   </div>
                 </div>
 

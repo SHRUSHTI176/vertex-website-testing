@@ -108,7 +108,7 @@ const EVENTS: EventItem[] = [
     min: 2, max: 4,
     note: "2–4 members · ₹100 per team · Finalists: Top 20 teams",
     rules: [
-      "Tracks: 1) Intelligent Systems & Automation (Robotics, Edge AI & TinyML, Sustainable Tech - 1st ₹6,000, 2nd ₹4,000). 2) Open Innovation (₹5,000).",
+      "Tracks: 1) Intelligent Systems & Automation (Robotics, Edge AI & TinyML, Sustainable Tech). 2) Open Innovation.",
       "Round 1 (Online Screening): 5-slide PDF presentation (Problem Statement, Hardware Block Diagram, Core Components), 1-minute working demonstration video, and complete Bill of Materials (BOM) with total cost.",
       "Round 2 (Hardware Expo Finale): Top 20 teams present physical working prototypes. Evaluation includes Live Demo, Hardware Integration, and Firmware.",
       "Originality & Build: Projects must be built from the ground up by the team. Arduino, ESP32, STM32, and custom mechatronics permitted. Off-the-shelf plug-and-play assembled kits are prohibited.",
@@ -116,6 +116,7 @@ const EVENTS: EventItem[] = [
       "Circuitry Inspection: Internal wiring and circuitry must remain accessible for judges to inspect.",
       "Safety: Exposed 220V AC wiring is strictly prohibited. High-current battery packs must be wired safely.",
       "Judging Criteria: Prototype Functionality (25%), Technical Complexity (25%), Build & Design Quality (20%), Innovation, Cost & Applicability (15%), Presentation & Pitch (15%).",
+      "Refer brochure for detailed rules.",
       "Event Coordinator: Dhruva J H - 6361536637"
     ]
   },
@@ -126,12 +127,13 @@ const EVENTS: EventItem[] = [
     min: 2, max: 4,
     note: "2–4 members · ₹100 per team · Finalists: Top 20 teams",
     rules: [
-      "Tracks: 1) Intelligent Systems & Automation (Robotics, Edge AI & TinyML, Sustainable Tech - 1st ₹6,000, 2nd ₹4,000). 2) Open Innovation (₹5,000).",
+      "Tracks: 1) Intelligent Systems & Automation (Robotics, Edge AI & TinyML, Sustainable Tech). 2) Open Innovation.",
       "Round 1 (Online Screening): 5-slide PDF presentation, 1-minute working demonstration video, and BOM.",
       "Round 2 (Hardware Expo Finale): Top 20 teams present physical working prototypes. Evaluation includes Live Demo, Hardware Integration, and Firmware.",
       "Originality & Build: Projects must be built from the ground up by the team. Fully assembled plug-and-play kits are prohibited.",
       "Safety: Exposed 220V AC wiring is prohibited. High-current battery packs must be wired safely.",
       "Judging Criteria: Prototype Functionality (25%), Technical Complexity (25%), Build & Design Quality (20%), Innovation, Cost & Applicability (15%), Presentation & Pitch (15%).",
+      "Refer brochure for detailed rules.",
       "Event Coordinator: Dhruva J H - 6361536637"
     ]
   },
@@ -140,16 +142,16 @@ const EVENTS: EventItem[] = [
     category: "Technical",
     feeType: "per_team", fee: 150,
     exact: 2,
-    note: "Strictly 2 members · ₹150 per team · Prize Pool: 20k",
+    note: "Strictly 2 members · ₹150 per team",
     rules: [
       "Format: Intense 4-round challenge solving unannounced puzzles, troubleshooting physical circuits, and decoding mystery firmware against a strict clock.",
-      "Prize Pool: Winner: ₹10,000 | 1st Runner Up: ₹7,000 | 2nd Runner Up: ₹3,000.",
       "Provided Equipment: Only materials, components, and tools provided by organizers may be used.",
       "Hardware Ban: Bringing outside hardware, pre-built circuits, or personal tools into the event area is prohibited.",
       "Strictly Unplugged: Phones, laptops, tablets, and smartwatches must remain stowed throughout active rounds.",
       "Team Communication: Teams may communicate only with their registered teammate.",
       "Fair Play: Completed solutions must be verified by an organizer before proceeding.",
       "Punctuality: Latecomers will not receive additional time.",
+      "Refer brochure for detailed rules.",
       "Event Coordinators: Jyothika S (8310325378), Shreyas J (8762485683)"
     ]
   },
@@ -158,10 +160,9 @@ const EVENTS: EventItem[] = [
     category: "Robotics",
     feeType: "per_team", fee: 100,
     min: 2, max: 3,
-    note: "2–3 members · ₹100 per team · Prize Pool: 15k",
+    note: "2–3 members · ₹100 per team",
     rules: [
       "Challenge: High-speed line-following challenge. Strictly a line follower challenge, not a line-maze solver.",
-      "Prize Pool: Winner: ₹9,000 | 1st Runner Up: ₹6,000.",
       "Bot Specifications: Max dimensions 25 cm × 25 cm × 25 cm (±2 cm tolerance). Max weight: 2.5 kg.",
       "Power & Autonomy: Onboard power supply only (max 12V DC). 100% autonomous. Bluetooth, Wi-Fi, RF, and manual control prohibited.",
       "Wheels: Only standard rubber wheels or treads permitted. Sticky adhesives, sprays, or chemicals are prohibited.",
@@ -169,6 +170,7 @@ const EVENTS: EventItem[] = [
       "Trials & Timing: 3 official trials. Best timing counts for leaderboard. 3-minute setup window; 3-minute max trial duration.",
       "Touches: Max 3 human touches/restarts allowed. Bot restarts from last cleared checkpoint.",
       "Track: Non-reflective flex banner/matte poster, 30mm line thickness, line inversion (white/black), sharp intersections, crossovers, U/C/S curves.",
+      "Refer brochure for detailed rules.",
       "Event Coordinator: Aditya Venkatesh - 9740768828"
     ]
   }
